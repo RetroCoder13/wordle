@@ -1,0 +1,2 @@
+# wordle
+Simple wordle challenge
