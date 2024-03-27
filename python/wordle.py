@@ -26,3 +26,4 @@ while not wordFound and attempts < 6:
     else:
         print("Not in word list")
         continue
+print("The word is: "+ word)
