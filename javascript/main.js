@@ -7,6 +7,15 @@ possibleWords.send()
 var words = possibleWords.responseText.split("\n")
 var answers = eval(answerWords.responseText)
 const word = answers[Math.floor(Math.random()*answers.length)]
+var letters = {}
+for(let i=0;i<5;i++){
+    let letter = word[i]
+    if(letters[letter]){
+        letters[letter] += 1
+    } else {
+        letters[letter] = 1
+    }
+}
 
 var inputWord = ""
 var attempt = 1
@@ -14,12 +23,15 @@ var letter = 0
 
 document.addEventListener("keydown",function(e){
     if(e.key == "Enter"){
+        let attemptLetters = JSON.parse(JSON.stringify(letters))
         if(words.includes(inputWord) && letter == 5){
             for(let i=0;i<5;i++){
-                if(inputWord[i] == word[i]){
+                if(inputWord[i] == word[i] && attemptLetters[inputWord[i]] > 0){
                     document.getElementById(`row-${attempt}`).children[i].style.backgroundColor = "green"
-                } else if(word.includes(inputWord[i])){
+                    attemptLetters[inputWord[i]] -= 1
+                } else if(word.includes(inputWord[i]) && attemptLetters[inputWord[i]] > 0){
                     document.getElementById(`row-${attempt}`).children[i].style.backgroundColor = "yellow"
+                    attemptLetters[inputWord[i]] -= 1
                 } else {
                     document.getElementById(`row-${attempt}`).children[i].style.backgroundColor = "lightgray"
                 }
