@@ -27,6 +27,9 @@ document.addEventListener("keydown",function(e){
             attempt += 1
             letter = 0
             inputWord = ""
+            if(attempt > 6){
+                document.writeln("The correct answer is: " + word)
+            }
         }
     } else if(e.key == "Backspace"){
         if(letter > 0){
