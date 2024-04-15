@@ -17,6 +17,14 @@ for(let i=0;i<5;i++){
     }
 }
 
+let alphabet = document.getElementById('alphabet')
+for(let i=0;i<26;i++){
+    let div = document.createElement('div')
+    div.innerHTML = String.fromCharCode(97+i)
+    div.id = "letter-" + String.fromCharCode(97+i)
+    alphabet.append(div)
+}
+
 var inputWord = ""
 var attempt = 1
 var letter = 0
@@ -28,12 +36,15 @@ document.addEventListener("keydown",function(e){
             for(let i=0;i<5;i++){
                 if(inputWord[i] == word[i] && attemptLetters[inputWord[i]] > 0){
                     document.getElementById(`row-${attempt}`).children[i].style.backgroundColor = "green"
+                    document.getElementById(`letter-${inputWord[i]}`).style.backgroundColor = "green"
                     attemptLetters[inputWord[i]] -= 1
                 } else if(word.includes(inputWord[i]) && attemptLetters[inputWord[i]] > 0){
                     document.getElementById(`row-${attempt}`).children[i].style.backgroundColor = "yellow"
+                    document.getElementById(`letter-${inputWord[i]}`).style.backgroundColor = "yellow"
                     attemptLetters[inputWord[i]] -= 1
                 } else {
                     document.getElementById(`row-${attempt}`).children[i].style.backgroundColor = "lightgray"
+                    document.getElementById(`letter-${inputWord[i]}`).style.backgroundColor = "lightgray"
                 }
             }
             attempt += 1
