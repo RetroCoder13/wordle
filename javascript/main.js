@@ -62,7 +62,7 @@ document.addEventListener("keydown",function(e){
         inputWord = inputWord.substring(0,inputWord.length-1)
     } else if (letter < 5 && e.key.charCodeAt(0) >= 97 && e.key.charCodeAt(0) <= 122) {
         inputWord += e.key
-        document.getElementById(`row-${attempt}`).children[letter].innerHTML = e.key
+        document.getElementById(`row-${attempt}`).children[letter].innerHTML = e.key.toUpperCase()
         letter += 1
     }
 })
