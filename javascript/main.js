@@ -49,7 +49,7 @@ document.addEventListener("keydown",function(e){
         }
         document.getElementById(`row-${attempt}`).children[letter].innerHTML = ""
         inputWord = inputWord.substring(0,inputWord.length-1)
-    } else if (letter < 5) {
+    } else if (letter < 5 && e.key.charCodeAt(0) >= 97 && e.key.charCodeAt(0) <= 122) {
         inputWord += e.key
         document.getElementById(`row-${attempt}`).children[letter].innerHTML = e.key
         letter += 1
