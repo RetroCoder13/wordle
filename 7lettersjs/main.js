@@ -1,8 +1,12 @@
 var answerWords = new XMLHttpRequest()
 answerWords.open("GET","https://raw.githubusercontent.com/RetroCoder13/wordle/main/7lettersjs/words.txt",false);
 answerWords.send()
-var words = answerWords.responseText.toLowerCase().split("\n")
-const word = words[Math.floor(Math.random()*words.length)]
+var possibleWords = new XMLHttpRequest()
+possibleWords.open("GET","https://raw.githubusercontent.com/powerlanguage/word-lists/master/word-list-7-letters.txt",false);
+possibleWords.send()
+var words = possibleWords.responseText.split("\n")
+var answers = answerWords.responseText.split("\n")
+const word = answers[Math.floor(Math.random()*answers.length)]
 var letters = {}
 for(let i=0;i<7;i++){
     let letter = word[i]
