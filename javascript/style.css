@@ -10,7 +10,7 @@ html{
     background-color: white;
     padding: 10px;
     display: grid;
-    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-columns: 70px 70px 70px 70px 70px;
     gap: 10px;
 }
 
@@ -19,4 +19,11 @@ html{
     background-color: lightgray;
     font-size: 50px;
     padding: 5px;
+}
+
+@keyframes flip {
+    0% {transform: rotate3d(1,0,0,0deg);}
+    50% {transform: rotate3d(1,0,0,90deg);}
+    50% {transform: rotate3d(1,0,0,90deg);}
+    100% {transform: rotate3d(1,0,0,0deg);}
 }
