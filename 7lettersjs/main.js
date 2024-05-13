@@ -53,16 +53,15 @@ document.addEventListener("keydown",function(e){
 function update(row,inputWord,word,attemptLetters,letter){
     document.getElementById(`row-${row}`).children[letter].style.animation = "flip .5s forwards"
     setTimeout(function(){
-        if(inputWord[letter] == word[letter] && attemptLetters[inputWord[letter]] > 0){
+        if(word.includes(inputWord[letter]) && attemptLetters[inputWord[letter]] > 0){
             document.getElementById(`row-${row}`).children[letter].style.backgroundColor = "green"
             document.getElementById(`letter-${inputWord[letter]}`).style.backgroundColor = "green"
             attemptLetters[inputWord[letter]] -= 1
-        } else if(word.includes(inputWord[letter]) && attemptLetters[inputWord[letter]] > 0){
+        } else if(inputWord[letter] == word[letter] && attemptLetters[inputWord[letter]] > 0){
             document.getElementById(`row-${row}`).children[letter].style.backgroundColor = "yellow"
             document.getElementById(`letter-${inputWord[letter]}`).style.backgroundColor = "yellow"
             attemptLetters[inputWord[letter]] -= 1
-        } else {
-            document.getElementById(`row-${row}`).children[letter].style.backgroundColor = "lightgray"
+        } else if(document.getElementById(`letter-${inputWord[letter]}`).style.backgroundColor == ""){
             document.getElementById(`letter-${inputWord[letter]}`).style.backgroundColor = "lightgray"
         }
         if(letter <= 7){
