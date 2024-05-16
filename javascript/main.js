@@ -4,8 +4,8 @@ answerWords.send()
 var possibleWords = new XMLHttpRequest()
 possibleWords.open("GET","https://raw.githubusercontent.com/tabatkins/wordle-list/main/words",false);
 possibleWords.send()
-var words = possibleWords.responseText.split("\n")
-var answers = eval(answerWords.responseText)
+var words = possibleWords.responseText.toLowerCase().split("\n")
+var answers = eval(answerWords.responseText.toLowerCase())
 const word = answers[Math.floor(Math.random()*answers.length)]
 // const word = "stone"
 var letters = {}

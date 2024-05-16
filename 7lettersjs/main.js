@@ -4,8 +4,8 @@ answerWords.send()
 var possibleWords = new XMLHttpRequest()
 possibleWords.open("GET","https://raw.githubusercontent.com/powerlanguage/word-lists/master/word-list-7-letters.txt",false);
 possibleWords.send()
-var words = possibleWords.responseText.split("\n")
-var answers = answerWords.responseText.split("\n")
+var words = possibleWords.responseText.toLowerCase().split("\n")
+var answers = answerWords.responseText.toLowerCase().split("\n")
 const word = answers[Math.floor(Math.random()*answers.length)]
 var letters = {}
 for(let i=0;i<7;i++){
