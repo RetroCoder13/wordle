@@ -56,7 +56,7 @@ document.addEventListener("keydown",function(e){
 })
 
 function update(row,inputWord,word,attemptLetters,letter){
-    document.getElementById(`row-${row}`).children[letter].style.animation = "flip .5s forwards ease-in"
+    document.getElementById(`row-${row}`).children[letter].style.animation = "flip .5s forwards cubic-bezier(0.37, 0, 0.63, 1)"
     setTimeout(function(){
         if(letter <= 5){
             update(row,inputWord,word,attemptLetters,letter+1)
