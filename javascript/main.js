@@ -56,7 +56,12 @@ document.addEventListener("keydown",function(e){
 })
 
 function update(row,inputWord,word,attemptLetters,letter){
-    document.getElementById(`row-${row}`).children[letter].style.animation = "flip .5s forwards"
+    document.getElementById(`row-${row}`).children[letter].style.animation = "flip .5s forwards ease-in"
+    setTimeout(function(){
+        if(letter <= 5){
+            update(row,inputWord,word,attemptLetters,letter+1)
+        }
+    },200)
     setTimeout(function(){
         if(inputWord[letter] == word[letter] && attemptLetters[inputWord[letter]] > 0){
             document.getElementById(`row-${row}`).children[letter].style.backgroundColor = "green"
@@ -68,9 +73,6 @@ function update(row,inputWord,word,attemptLetters,letter){
             attemptLetters[inputWord[letter]] -= 1
         } else if(document.getElementById(`letter-${inputWord[letter]}`).style.backgroundColor == ""){
             document.getElementById(`letter-${inputWord[letter]}`).style.backgroundColor = "lightgray"
-        }
-        if(letter <= 5){
-            update(row,inputWord,word,attemptLetters,letter+1)
         }
     },250)
 }
